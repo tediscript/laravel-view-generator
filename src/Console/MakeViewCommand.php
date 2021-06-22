@@ -85,6 +85,7 @@ class MakeViewCommand extends Command
         $pluralName = Str::plural($name);
         $resourceName = Str::lower($pluralName);
         $modelName = Str::camel($name);
+        $modelCollectionName = Str::plural($modelName);
 
         $viewsPath = resource_path('views');
         File::ensureDirectoryExists($viewsPath);
@@ -95,6 +96,7 @@ class MakeViewCommand extends Command
         $template = Str::replace('{{ pluralName }}', $pluralName, $template);
         $template = Str::replace('{{ resourceName }}', $resourceName, $template);
         $template = Str::replace('{{ modelName }}', $modelName, $template);
+        $template = Str::replace('{{ modelCollectionName }}', $modelCollectionName, $template);
 
         $path = trim($path, '/');
         $viewPath = "${viewsPath}/${path}.blade.php";
