@@ -1,6 +1,6 @@
 <?php
 
-namespace Tediscript\ViewGenerator\Commands;
+namespace Tediscript\ViewGenerator\Console;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
