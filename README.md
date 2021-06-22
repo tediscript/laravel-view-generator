@@ -13,7 +13,7 @@ Since it's not (yet) available in packagist.org then here is how to install it. 
     ],
     "require-dev": {
         "tediscript/laravel-view-generator": "^0.1.0"
-    },
+    }
 ```
 
 ## Usage
@@ -23,13 +23,13 @@ Just like you create model via php artisan.
 ```
 php artisan make:view view-name
 ```
-It will generate file `resources/view/view-name.blade.php` using `plain.stub` template.
+It will generate file `resources/views/view-name.blade.php` using `plain.stub` template.
 
 
 ```
 php artisan make:view schools/edit School --type=edit
 ```
-It will generate file `resources/view/schools/edit.blade.php` using `edit.stub` template.
+It will generate file `resources/views/schools/edit.blade.php` using `edit.stub` template.
 
 - argument `schools/edit` is the name of blade file
 - argument `School` is the model name. It is optional. Default model name is `Item`
@@ -37,7 +37,7 @@ It will generate file `resources/view/schools/edit.blade.php` using `edit.stub` 
 
 ### Create your own stub file
 You can create your own stub file inside folder `resources/stubs/`. 
-For example create file `resource/stubs/welcome.stub` then you can call artisan command:
+For example create file `resources/stubs/welcome.stub` then you can call artisan command:
 ```
 php artisan make:view awesome --type=welcome
 ```
