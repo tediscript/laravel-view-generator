@@ -63,7 +63,7 @@ class MakeViewCommand extends Command
     {
         return file_exists($customPath = resource_path(trim($stub, '/')))
                         ? $customPath
-                        : __DIR__.$stub;
+                        : __DIR__ . '/../../' . $stub;
     }
 
     /**
