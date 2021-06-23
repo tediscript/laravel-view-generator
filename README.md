@@ -27,7 +27,7 @@ It will generate file `resources/views/view-name.blade.php` using `plain.stub` t
 
 
 ```
-php artisan make:view schools.edit -model=School --layout=edit
+php artisan make:view schools.edit --model=School --layout=edit
 ```
 It will generate file `resources/views/schools/edit.blade.php` using `edit.stub` template.
 
