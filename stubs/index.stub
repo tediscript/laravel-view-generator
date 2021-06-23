@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('{{ pluralName }} Table') }}
+            {{ __('{{ pluralModel }} Table') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <ul class="flex">
                     <li><a href="{{ route('dashboard') }}" class="underline">{{ __('Dashboard') }}</a></li>
                     <li><span class="mx-2">/</span></li>
-                    <li>{{ __('{{ pluralName }}') }}</li>
+                    <li>{{ __('{{ pluralModel }}') }}</li>
                 </ul>
             </div>
 
@@ -54,21 +54,21 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light">
-                                @foreach (${{ modelCollectionName }} as ${{ modelName }})
+                                @foreach (${{ instanceCollectionModel }} as ${{ instanceModel }})
                                     <tr class="border-b border-gray-200">
-                                        <td class="p-3 text-right">{{ ${{ modelName }}->id }}</td>
-                                        <td class="p-3 text-left">{{ ${{ modelName }}->title }}</td>
-                                        <td class="p-3 text-left hidden md:block">{{ ${{ modelName }}->description }}</td>
+                                        <td class="p-3 text-right">{{ ${{ instanceModel }}->id }}</td>
+                                        <td class="p-3 text-left">{{ ${{ instanceModel }}->title }}</td>
+                                        <td class="p-3 text-left hidden md:block">{{ ${{ instanceModel }}->description }}</td>
                                         <td class="p-3 text-right">
                                             <form method="post"
-                                                action="{{ route('{{ resourceName }}.destroy', ${{ modelName }}->id) }}">
+                                                action="{{ route('{{ resourceName }}.destroy', ${{ instanceModel }}->id) }}">
                                                 @method('delete')
                                                 @csrf
-                                                <a href="{{ route('{{ resourceName }}.show', ${{ modelName }}->id) }}"
+                                                <a href="{{ route('{{ resourceName }}.show', ${{ instanceModel }}->id) }}"
                                                     class="mb-1 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
                                                     {{ __('Show') }}
                                                 </a>
-                                                <a href="{{ route('{{ resourceName }}.edit', ${{ modelName }}->id) }}"
+                                                <a href="{{ route('{{ resourceName }}.edit', ${{ instanceModel }}->id) }}"
                                                     class="mb-1 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
                                                     {{ __('Edit') }}
                                                 </a>

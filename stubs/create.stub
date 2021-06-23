@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create {{ name }}') }}
+            {{ __('Create {{ model }}') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <ul class="flex">
                     <li><a href="{{ route('dashboard') }}" class="underline">{{ __('Dashboard') }}</a></li>
                     <li><span class="mx-2">/</span></li>
-                    <li><a href="{{ route('{{ modelCollections }}.index') }}" class="underline">{{ __('{{ pluralName }}')  }}</a></li>
+                    <li><a href="{{ route('{{ resourceName }}.index') }}" class="underline">{{ __('{{ pluralModel }}')  }}</a></li>
                     <li><span class="mx-2">/</span></li>
                     <li>{{ __('Create') }}</li>
                 </ul>

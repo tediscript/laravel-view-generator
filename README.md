@@ -27,27 +27,27 @@ It will generate file `resources/views/view-name.blade.php` using `plain.stub` t
 
 
 ```
-php artisan make:view schools/edit School --type=edit
+php artisan make:view schools.edit -model=School --layout=edit
 ```
 It will generate file `resources/views/schools/edit.blade.php` using `edit.stub` template.
 
-- argument `schools/edit` is the name of blade file
-- argument `School` is the model name. It is optional. Default model name is `Item`
-- option `--type=edit` is used to specify the view stub file. The option are `create`, `edit`, `index`, `plain`, `show`. The default value is `plain`
+- argument `schools.edit` is the path name of blade file (just like view name in render)
+- option `--model=School` is the model name. It is optional. Default model name is `Item`
+- option `--layout=edit` is used to specify the view stub file. The option are `create`, `edit`, `index`, `plain`, `show`. The default value is `plain`
 
-### Create your own stub file
-You can create your own stub file inside folder `resources/stubs/`. 
+### Create your own layout template
+You can create your own stub file inside folder `resources/stubs`. 
 For example create file `resources/stubs/welcome.stub` then you can call artisan command:
 ```
-php artisan make:view awesome --type=welcome
+php artisan make:view awesome --layout=welcome
 ```
-It will generate file `resources/views/awesome.blade.php`
+It will generate file `resources/views/awesome.blade.php` using `welcome.stub` layout.
 
 The supported variable to render are:
-- `{{ name }}` we get it from argument model name
-- `{{ pluralName }}` we get it from pluralize of `name`
-- `{{ resourceName }}` we get it from lower case of `pluralName`
-- `{{ modelName }}` we get it from camel case of `name`
-- `{{ modelCollectionName }}` we get it from pluralize of `modelName`
+- `{{ model }}` we get it from option `--model`
+- `{{ pluralModel }}` we get it from pluralize of `model`
+- `{{ resourceName }}` we get it from lower case of `pluralModel`
+- `{{ instanceModel }}` we get it from camel case of `model`
+- `{{ instanceCollectionModel }}` we get it from pluralize of `instanceModel`
 
 Thats it.

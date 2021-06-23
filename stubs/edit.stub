@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit {{ name }}') }}
+            {{ __('Edit {{ model }}') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <ul class="flex">
                     <li><a href="{{ route('dashboard') }}" class="underline">{{ __('Dashboard') }}</a></li>
                     <li><span class="mx-2">/</span></li>
-                    <li><a href="{{ route('{{ resourceName }}.index') }}" class="underline">{{ __('{{ pluralName }}') }}</a></li>
+                    <li><a href="{{ route('{{ resourceName }}.index') }}" class="underline">{{ __('{{ pluralModel }}') }}</a></li>
                     <li><span class="mx-2">/</span></li>
                     <li>{{ __('Edit') }}</li>
                 </ul>
@@ -50,7 +50,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{ route('{{ resourceName }}.update', ${{ modelName }}->id) }}">
+                    <form method="post" action="{{ route('{{ resourceName }}.update', ${{ instanceModel }}->id) }}">
                         @method('put')
                         @csrf
 
@@ -60,7 +60,7 @@
                             </label>
                             <input
                                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                id="title" type="text" name="title" value="{{ old('title', ${{ modelName }}->title) }}" />
+                                id="title" type="text" name="title" value="{{ old('title', ${{ instanceModel }}->title) }}" />
                         </div>
 
                         <div class="mt-4">
@@ -70,7 +70,7 @@
                             <textarea
                                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                 id="description" name="description" cols="100"
-                                rows="4">{{ old('description', ${{ modelName }}->description) }}</textarea>
+                                rows="4">{{ old('description', ${{ instanceModel }}->description) }}</textarea>
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

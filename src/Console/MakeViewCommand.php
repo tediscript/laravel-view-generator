@@ -14,9 +14,9 @@ class MakeViewCommand extends Command
      * @var string
      */
     protected $signature = 'make:view
-                                {path : The path to generated view file}
-                                {name=Item : The name of the model class} 
-                                {--t|type=plain : Manually specify the view stub file to use}';
+                                {name : The name of generated view blade file}
+                                {--m|model=Item : Generate a view for the given model} 
+                                {--l|layout=plain : Manually specify the stub view layout to use}';
 
     /**
      * The console command description.
@@ -44,7 +44,8 @@ class MakeViewCommand extends Command
     {
         $stub = null;
 
-        if ($type = $this->option('type')) {
+        if ($type = $this->option('layout')) {
+            $type = Str::replace('.', '/', $type);
             $stub = "/stubs/{$type}.stub";
         }
 
@@ -78,26 +79,27 @@ class MakeViewCommand extends Command
 
     protected function createView()
     {
-        $path = $this->argument('path');
         $name = $this->argument('name');
+        $model = $this->option('model');
 
         $this->line('Create view...');
-        $pluralName = Str::plural($name);
-        $resourceName = Str::lower($pluralName);
-        $modelName = Str::camel($name);
-        $modelCollectionName = Str::plural($modelName);
+        $pluralModel = Str::plural($model);
+        $resourceName = Str::lower($pluralModel);
+        $instanceModel = Str::camel($model);
+        $instanceCollectionModel = Str::plural($instanceModel);
 
         $viewsPath = resource_path('views');
         File::ensureDirectoryExists($viewsPath);
 
         $stubPath = $this->getStub();
         $template = file_get_contents($stubPath);
-        $template = Str::replace('{{ name }}', $name, $template);
-        $template = Str::replace('{{ pluralName }}', $pluralName, $template);
+        $template = Str::replace('{{ model }}', $model, $template);
+        $template = Str::replace('{{ pluralModel }}', $pluralModel, $template);
         $template = Str::replace('{{ resourceName }}', $resourceName, $template);
-        $template = Str::replace('{{ modelName }}', $modelName, $template);
-        $template = Str::replace('{{ modelCollectionName }}', $modelCollectionName, $template);
+        $template = Str::replace('{{ instanceModel }}', $instanceModel, $template);
+        $template = Str::replace('{{ instanceCollectionModel }}', $instanceCollectionModel, $template);
 
+        $path = Str::replace('.', '/', $name);
         $path = trim($path, '/');
         $viewPath = "${viewsPath}/${path}.blade.php";
         File::ensureDirectoryExists(dirname($viewPath));

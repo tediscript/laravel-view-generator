@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Show {{ name }}') }}
+            {{ __('Show {{ model }}') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <ul class="flex">
                     <li><a href="{{ route('dashboard') }}" class="underline">{{ __('Dashboard') }}</a></li>
                     <li><span class="mx-2">/</span></li>
-                    <li><a href="{{ route('{{ resourceName }}.index') }}" class="underline">{{ __('{{ pluralName }}') }}</a></li>
+                    <li><a href="{{ route('{{ resourceName }}.index') }}" class="underline">{{ __('{{ pluralModel }}') }}</a></li>
                     <li><span class="mx-2">/</span></li>
                     <li>{{ __('Show') }}</li>
                 </ul>
@@ -44,7 +44,7 @@
                                     {{ __('Title') }}
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-700 sm:mt-0 sm:col-span-2">
-                                    {{ ${{ modelName }}->title }}
+                                    {{ ${{ instanceModel }}->title }}
                                 </dd>
                             </div>
                             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -52,14 +52,14 @@
                                     {{ __('Description') }}
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-700 sm:mt-0 sm:col-span-2">
-                                    {{ ${{ modelName }}->description }}
+                                    {{ ${{ instanceModel }}->description }}
                                 </dd>
                             </div>
                         </dl>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <a href="{{ route('{{ resourceName }}.edit', ${{ modelName }}->id) }}"
+                        <a href="{{ route('{{ resourceName }}.edit', ${{ instanceModel }}->id) }}"
                             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
                             {{ __('Edit') }}
                         </a>
