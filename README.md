@@ -12,7 +12,7 @@ Since it's not (yet) available in packagist.org then here is how to install it. 
         }
     ],
     "require-dev": {
-        "tediscript/laravel-view-generator": "^0.1.0"
+        "tediscript/laravel-view-generator": "^1.0.0"
     }
 ```
 
