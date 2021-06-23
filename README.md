@@ -1,16 +1,15 @@
 # laravel-view-generator
 Laravel module to generate view from artisan command
 
-## Installation
-Since it's not (yet) available in packagist.org then here is how to install it. Just add this script to your `composer.json` and run `composer update`
+## Installation via composer
+Run command:
+```
+composer require --dev tediscript/laravel-view-generator
+```
+
+Or add this script to your `composer.json` and run `composer update`
 
 ```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tediscript/laravel-view-generator"
-        }
-    ],
     "require-dev": {
         "tediscript/laravel-view-generator": "^1.0.0"
     }
